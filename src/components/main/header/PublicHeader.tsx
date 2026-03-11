@@ -30,15 +30,7 @@ async function PublicHeader() {
 
   return (
     <header className='flex w-full flex-col gap-4 border-b-[1px]'>
-      <div className='flex w-full justify-center bg-gradient-to-r from-red-50 via-white to-red-50 py-3'>
-        <p className='flex items-center gap-2'>
-          <span className='font-semibold'>Fullstack e-commerce platform</span> built with Next.js
-          and MySQL
-          <Link href='https://github.com/papeiron/Next.js-Ecommerce-App'>
-            <FaGithub className='h-6 w-6' />
-          </Link>
-        </p>
-      </div>
+   
       <Container>
         <div className='flex'>
           <div className='flex-[30%]'>

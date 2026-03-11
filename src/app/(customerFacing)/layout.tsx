@@ -1,6 +1,5 @@
 import Footer from '@/components/main/footer/Footer';
 import PublicHeader from '@/components/main/header/PublicHeader';
-import EducationalSiteDisclaimerBanner from '@/components/shared/ui/EducationalSiteDisclaimerBanner ';
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -8,7 +7,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <PublicHeader />
 
       <main className="flex-grow py-4">{children}</main>
-      <EducationalSiteDisclaimerBanner />
+  
       <Footer />
     </div>
   );
