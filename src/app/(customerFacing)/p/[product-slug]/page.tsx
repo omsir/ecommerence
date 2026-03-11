@@ -10,7 +10,6 @@ import ProductShow from '@/components/main/p/ProductShow';
 import { Heading } from '@/components/shared/ui';
 import { getUrl } from '@/lib/helpers';
 import {
-  fetchAllProducts,
   fetchProductBySlug,
   fetchProductsWithOptions,
   fetchStoreRatingByProductSlug,
@@ -20,7 +19,8 @@ type PageProps = {
   params: { 'product-slug': string };
 };
 
-export const dynamicParams = false;
+// Use dynamic rendering since database may not be available at build time
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const productSlug = params['product-slug'];
@@ -66,18 +66,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       'product:retailer': product.store.store_name,
     },
   };
-}
-
-export async function generateStaticParams(): Promise<Array<{ 'product-slug': string }>> {
-  const products = await fetchAllProducts();
-
-  if (!products || products.length === 0) {
-    return [];
-  }
-
-  return products.map((p: any) => ({
-    'product-slug': p.slug.toString(),
-  }));
 }
 
 async function ProductPage({ params }: PageProps) {

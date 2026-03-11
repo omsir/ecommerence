@@ -50,19 +50,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export async function generateStaticParams() {
-  const categories = await fetchAllCategories();
-
-  if (!categories || categories.length === 0) {
-    return [];
-  }
-
-  return categories.map((cat) => {
-    return {
-      ['category-slug']: cat.slug,
-    };
-  });
-}
+// Use dynamic rendering since database may not be available at build time
+export const dynamic = 'force-dynamic';
 
 async function CategoryPage({ params, searchParams }: PageProps) {
   const categorySlug = params['category-slug'];
